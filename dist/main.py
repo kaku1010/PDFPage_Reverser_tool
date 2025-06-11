@@ -7,12 +7,12 @@ class PDFReverserApp:
     def __init__(self, root):
         self.root = root
         self.root.title("PDF 頁數反轉工具")
-        self.root.geometry("400x250")
+        self.root.geometry("400x400")
         self.files = []
         self.output_folder = os.getcwd()
 
         # 標題
-        tk.Label(root, text="📄 拖曳或選擇 PDF 檔案", font=("Arial", 14)).pack(pady=10)
+        tk.Label(root, text="拖曳或選擇PDF檔案", font=("微軟正黑體", 14)).pack(pady=10)
 
         # 選擇檔案按鈕
         tk.Button(root, text="選擇 PDF 檔案", command=self.select_files).pack(pady=5)
@@ -51,7 +51,7 @@ class PDFReverserApp:
                     writer.add_page(page)
 
                 filename = os.path.splitext(os.path.basename(file_path))[0] + "_reversed.pdf"
-                output_path = os.path.join(self.output_folder, filename)
+                output_path = os.path.join(self.output_folder, filename) #輸出位址，檔名
 
                 with open(output_path, "wb") as f:
                     writer.write(f)
